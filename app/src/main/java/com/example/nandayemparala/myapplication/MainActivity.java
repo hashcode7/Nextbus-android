@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
             googleMap.addPolyline(polylineOptions);
         }
 
-        for(Stop stop: route.stops){
+        for(Stop stop: route.getStops()){
             googleMap.addMarker(new MarkerOptions()
                     .position(stop.getMarkerPoint())
                     .title(stop.getMarkerTitle())

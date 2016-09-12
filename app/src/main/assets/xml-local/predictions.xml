@@ -1,0 +1,9 @@
+<body copyright="All data copyright Rutgers University 2016.">
+    <predictions agencyTitle="Rutgers University" routeTitle="Kearney/Harrison" routeTag="kearney" stopTitle="NJIT" stopTag="njit">
+        <direction title="Loop">
+            <prediction epochTime="1473472924711" seconds="1571" minutes="26" isDeparture="false" affectedByLayover="true" dirTag="loop" vehicle="4129" block="K2"/>
+            <prediction epochTime="1473474724711" seconds="3371" minutes="56" isDeparture="false" affectedByLayover="true" dirTag="loop" vehicle="4133" block="K1"/>
+            <prediction epochTime="1473476524711" seconds="5171" minutes="86" isDeparture="false" affectedByLayover="true" dirTag="loop" vehicle="4129" block="K2"/>
+        </direction>
+    </predictions>
+</body>

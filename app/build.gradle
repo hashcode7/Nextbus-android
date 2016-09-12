@@ -61,4 +61,7 @@ dependencies {
     apt "org.androidannotations:androidannotations:$AAVersion"
     compile "org.androidannotations:androidannotations-api:$AAVersion"
 
+    compile 'com.github.vipulasri:timelineview:1.0.3'
+    compile 'com.j256.ormlite:ormlite-android:5.0'
+
 }

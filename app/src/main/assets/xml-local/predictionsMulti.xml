@@ -1,0 +1,78 @@
+<body copyright="All data copyright Rutgers University 2016.">
+    <predictions agencyTitle="Rutgers University" routeTitle="Kearney/Harrison" routeTag="kearney" stopTitle="Kearny Ave and Quincy St" stopTag="kearquin">
+        <direction title="Loop">
+            <prediction epochTime="1473471352003" seconds="8" minutes="0" isDeparture="false" dirTag="loop" vehicle="4129" block="K2"/>
+            <prediction epochTime="1473472463991" seconds="1120" minutes="18" isDeparture="false" dirTag="loop" vehicle="4133" block="K1"/>
+            <prediction epochTime="1473474053024" seconds="2709" minutes="45" isDeparture="false" affectedByLayover="true" dirTag="loop" vehicle="4129" block="K2"/>
+            <prediction epochTime="1473475853024" seconds="4509" minutes="75" isDeparture="false" affectedByLayover="true" dirTag="loop" vehicle="4133" block="K1"/>
+        </direction>
+    </predictions>
+    <predictions agencyTitle="Rutgers University" routeTitle="Kearney/Harrison" routeTag="kearney" stopTitle="Harrison Ave & Passaic Ave" stopTag="harrpass">
+        <direction title="Loop">
+            <prediction epochTime="1473471770881" seconds="427" minutes="7" isDeparture="false" dirTag="loop" vehicle="4133" block="K1"/>
+            <prediction epochTime="1473473359914" seconds="2016" minutes="33" isDeparture="false" affectedByLayover="true" dirTag="loop" vehicle="4129" block="K2"/>
+            <prediction epochTime="1473475159914" seconds="3816" minutes="63" isDeparture="false" affectedByLayover="true" dirTag="loop" vehicle="4133" block="K1"/>
+            <prediction epochTime="1473476959914" seconds="5616" minutes="93" isDeparture="false" affectedByLayover="true" dirTag="loop" vehicle="4129" block="K2"/>
+        </direction>
+    </predictions>
+    <predictions agencyTitle="Rutgers University" routeTitle="Kearney/Harrison" routeTag="kearney" stopTitle="Kearny Ave & Dukes St." stopTag="kearduke">
+        <direction title="Loop">
+            <prediction epochTime="1473472172228" seconds="829" minutes="13" isDeparture="false" dirTag="loop" vehicle="4133" block="K1"/>
+            <prediction epochTime="1473473761261" seconds="2418" minutes="40" isDeparture="false" affectedByLayover="true" dirTag="loop" vehicle="4129" block="K2"/>
+            <prediction epochTime="1473475561261" seconds="4218" minutes="70" isDeparture="false" affectedByLayover="true" dirTag="loop" vehicle="4133" block="K1"/>
+        </direction>
+    </predictions>
+    <predictions agencyTitle="Rutgers University" routeTitle="Kearney/Harrison" routeTag="kearney" stopTitle="NJIT" stopTag="njit">
+        <direction title="Loop">
+            <prediction epochTime="1473472924711" seconds="1581" minutes="26" isDeparture="false" affectedByLayover="true" dirTag="loop" vehicle="4129" block="K2"/>
+            <prediction epochTime="1473474724711" seconds="3381" minutes="56" isDeparture="false" affectedByLayover="true" dirTag="loop" vehicle="4133" block="K1"/>
+            <prediction epochTime="1473476524711" seconds="5181" minutes="86" isDeparture="false" affectedByLayover="true" dirTag="loop" vehicle="4129" block="K2"/>
+        </direction>
+    </predictions>
+    <predictions agencyTitle="Rutgers University" routeTitle="Kearney/Harrison" routeTag="kearney" stopTitle="Kmart" stopTag="kmart">
+        <direction title="Loop">
+            <prediction epochTime="1473471834552" seconds="491" minutes="8" isDeparture="false" dirTag="loop" vehicle="4129" block="K2"/>
+            <prediction epochTime="1473472946540" seconds="1603" minutes="26" isDeparture="false" dirTag="loop" vehicle="4133" block="K1"/>
+            <prediction epochTime="1473474535573" seconds="3192" minutes="53" isDeparture="false" affectedByLayover="true" dirTag="loop" vehicle="4129" block="K2"/>
+            <prediction epochTime="1473476335573" seconds="4992" minutes="83" isDeparture="false" affectedByLayover="true" dirTag="loop" vehicle="4133" block="K1"/>
+        </direction>
+    </predictions>
+    <predictions agencyTitle="Rutgers University" routeTitle="Kearney/Harrison" routeTag="kearney" stopTitle="Frank E. Rodgers Blvd and Cleveland Ave" stopTag="frodclev">
+        <direction title="Loop">
+            <prediction epochTime="1473471970329" seconds="627" minutes="10" isDeparture="false" dirTag="loop" vehicle="4133" block="K1"/>
+            <prediction epochTime="1473473559362" seconds="2216" minutes="36" isDeparture="false" affectedByLayover="true" dirTag="loop" vehicle="4129" block="K2"/>
+            <prediction epochTime="1473475359362" seconds="4016" minutes="66" isDeparture="false" affectedByLayover="true" dirTag="loop" vehicle="4133" block="K1"/>
+            <prediction epochTime="1473477159362" seconds="5816" minutes="96" isDeparture="false" affectedByLayover="true" dirTag="loop" vehicle="4129" block="K2"/>
+        </direction>
+    </predictions>
+    <predictions agencyTitle="Rutgers University" routeTitle="Kearney/Harrison" routeTag="kearney" stopTitle="Boyden Hall" stopTag="boydhall">
+        <direction title="Loop">
+            <prediction epochTime="1473472800000" seconds="1456" minutes="24" isDeparture="true" affectedByLayover="true" dirTag="loop" vehicle="4129" block="K2"/>
+            <prediction epochTime="1473474600000" seconds="3256" minutes="54" isDeparture="true" affectedByLayover="true" dirTag="loop" vehicle="4133" block="K1"/>
+            <prediction epochTime="1473476400000" seconds="5056" minutes="84" isDeparture="true" affectedByLayover="true" dirTag="loop" vehicle="4129" block="K2"/>
+        </direction>
+    </predictions>
+    <predictions agencyTitle="Rutgers University" routeTitle="Kearney/Harrison" routeTag="kearney" stopTitle="ShopRite" stopTag="shoplite">
+        <direction title="Loop">
+            <prediction epochTime="1473471933802" seconds="590" minutes="9" isDeparture="false" dirTag="loop" vehicle="4129" block="K2"/>
+            <prediction epochTime="1473473045790" seconds="1702" minutes="28" isDeparture="false" dirTag="loop" vehicle="4133" block="K1"/>
+            <prediction epochTime="1473474634823" seconds="3291" minutes="54" isDeparture="false" affectedByLayover="true" dirTag="loop" vehicle="4129" block="K2"/>
+            <prediction epochTime="1473476434823" seconds="5091" minutes="84" isDeparture="false" affectedByLayover="true" dirTag="loop" vehicle="4133" block="K1"/>
+        </direction>
+    </predictions>
+    <predictions agencyTitle="Rutgers University" routeTitle="Kearney/Harrison" routeTag="kearney" stopTitle="Kearny Ave and Midland Ave" stopTag="kearmidl">
+        <direction title="Loop">
+            <prediction epochTime="1473471439275" seconds="96" minutes="1" isDeparture="false" dirTag="loop" vehicle="4129" block="K2"/>
+            <prediction epochTime="1473472551263" seconds="1208" minutes="20" isDeparture="false" dirTag="loop" vehicle="4133" block="K1"/>
+            <prediction epochTime="1473474140296" seconds="2797" minutes="46" isDeparture="false" affectedByLayover="true" dirTag="loop" vehicle="4129" block="K2"/>
+            <prediction epochTime="1473475940296" seconds="4597" minutes="76" isDeparture="false" affectedByLayover="true" dirTag="loop" vehicle="4133" block="K1"/>
+        </direction>
+    </predictions>
+    <predictions agencyTitle="Rutgers University" routeTitle="Kearney/Harrison" routeTag="kearney" stopTitle="Kearny Ave and Bergen Ave" stopTag="kearberg">
+        <direction title="Loop">
+            <prediction epochTime="1473472293148" seconds="950" minutes="15" isDeparture="false" dirTag="loop" vehicle="4133" block="K1"/>
+            <prediction epochTime="1473473882181" seconds="2539" minutes="42" isDeparture="false" affectedByLayover="true" dirTag="loop" vehicle="4129" block="K2"/>
+            <prediction epochTime="1473475682181" seconds="4339" minutes="72" isDeparture="false" affectedByLayover="true" dirTag="loop" vehicle="4133" block="K1"/>
+        </direction>
+    </predictions>
+</body>
