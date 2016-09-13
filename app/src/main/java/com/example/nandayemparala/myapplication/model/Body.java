@@ -3,7 +3,9 @@ package com.example.nandayemparala.myapplication.model;
 import org.simpleframework.xml.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Nanda Yemparala on 8/30/16.
@@ -45,6 +47,21 @@ public class Body {
 
         @ElementList(inline = true, name = "prediction")
         public List<Prediction> predictions;
+
+        public int getNoOfVehicles(){
+            if(predictions != null){
+
+                Set<Integer> vehicles = new HashSet<>();
+                for(Prediction p: predictions){
+                    if(!vehicles.contains(p.vehicle)){
+                        vehicles.add(p.getVehicle());
+                    }
+                }
+                return vehicles.size();
+            }
+
+            return 0;
+        }
     }
 
     @Root(strict = false)
@@ -64,6 +81,10 @@ public class Body {
 
         public int getMinutes() {
             return minutes;
+        }
+
+        public int getVehicle() {
+            return vehicle;
         }
     }
 

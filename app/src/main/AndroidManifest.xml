@@ -31,6 +31,10 @@
         </activity>
         
         <activity android:name=".activity.StopsListActivity_">
+
+        </activity>
+
+        <activity android:name=".activity.HomeActivity_">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

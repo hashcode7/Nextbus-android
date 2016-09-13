@@ -11,6 +11,7 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
@@ -19,7 +20,7 @@ import java.util.List;
  */
 @DatabaseTable
 @Root(strict = false)
-public class Route {
+public class Route{
 
 //    @DatabaseField(generatedId = true, columnName = "_id")
 //    private int id;

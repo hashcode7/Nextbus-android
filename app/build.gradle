@@ -40,6 +40,7 @@ dependencies {
     compile 'com.android.support:gridlayout-v7:24.2.0'
     compile 'com.android.support:recyclerview-v7:24.2.0'
     compile 'com.android.support:appcompat-v7:24.2.0'
+    compile 'com.android.support:design:24.2.0'
 
 //    compile 'com.tickaroo.tikxml:annotation:0.5.2-SNAPSHOT'
 //    compile 'com.tickaroo.tikxml:core:0.5.2-SNAPSHOT'
