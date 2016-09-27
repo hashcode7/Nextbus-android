@@ -62,6 +62,13 @@ public class Body {
 
             return 0;
         }
+
+        public List<Prediction> getPredictions() {
+            if(predictions == null){
+                return new ArrayList<>();
+            }
+            return predictions;
+        }
     }
 
     @Root(strict = false)

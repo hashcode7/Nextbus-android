@@ -43,42 +43,42 @@ public class StopsAdapter extends ArrayAdapter<Body.Predictions> {
         if(convertView == null){
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.stop_list_row, parent, false);
         }
-        Body.Predictions stop = getItem(position);
-        ((TextView) convertView.findViewById(R.id.stop_title)).setText(stop.stopTitle);
-
-        String s= "23";
-        SpannableString ss1=  new SpannableString(s);
-        ss1.setSpan(new RelativeSizeSpan(2f), 0, s.length(), 0); // set size
-        ss1.setSpan( new android.text.style.StyleSpan(Typeface.BOLD), 0, s.length(), 0);
-        SpannableString ss2=  new SpannableString(" min");
-        ((TextView) convertView.findViewById(R.id.text1)).setText(TextUtils.concat(ss1, ss2));
-        TextView timeText =((TextView) convertView.findViewById(R.id.text1));
-        timeText.setTypeface(Typeface.createFromAsset(getContext().getAssets(), "fonts/Roboto-LightItalic.ttf"));
-        if(stop.direction != null && stop.direction.predictions != null){
-
-            for(int i=0;i<stop.direction.predictions.size(); i++){
-                Body.Prediction prediction = stop.direction.predictions.get(i);
-                int predTime = (prediction.getMinutes() > 0 ? prediction.getMinutes():prediction.getSeconds());
-                String secondaryTxt = (prediction.getMinutes() > 0 ? " min ":" sec ");
-                final SpannableString timeSpan = new SpannableString("" + predTime);
-                if(i == 0){
-                    timeSpan.setSpan(new RelativeSizeSpan(2f), 0, timeSpan.length(), 0); // set size
-                    timeSpan.setSpan( new android.text.style.StyleSpan(Typeface.BOLD), 0, timeSpan.length(), 0);
-                    if(predTime < 10){
-                        timeSpan.setSpan(new ForegroundColorSpan(Color.RED), 0, timeSpan.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    }
-                    timeText.setText(TextUtils.concat(timeSpan, secondaryTxt));
-                }else if(i == 1){
-                    timeSpan.setSpan(new RelativeSizeSpan(1.5f), 0, timeSpan.length(), 0); // set size
-                    timeSpan.setSpan( new android.text.style.StyleSpan(Typeface.BOLD), 0, timeSpan.length(), 0);
-                    timeText.setText(TextUtils.concat(timeText.getText(), timeSpan, secondaryTxt));
-                }else if(i == 2){
-                    timeSpan.setSpan(new RelativeSizeSpan(1.5f), 0, timeSpan.length(), 0); // set size
-                    timeSpan.setSpan( new android.text.style.StyleSpan(Typeface.BOLD), 0, timeSpan.length(), 0);
-                    timeText.setText(TextUtils.concat(timeText.getText(), timeSpan, secondaryTxt));
-                }
-            }
-        }
+//        Body.Predictions stop = getItem(position);
+//        ((TextView) convertView.findViewById(R.id.stop_title)).setText(stop.stopTitle);
+//
+//        String s= "23";
+//        SpannableString ss1=  new SpannableString(s);
+//        ss1.setSpan(new RelativeSizeSpan(2f), 0, s.length(), 0); // set size
+//        ss1.setSpan( new android.text.style.StyleSpan(Typeface.BOLD), 0, s.length(), 0);
+//        SpannableString ss2=  new SpannableString(" min");
+//        ((TextView) convertView.findViewById(R.id.text1)).setText(TextUtils.concat(ss1, ss2));
+//        TextView timeText =((TextView) convertView.findViewById(R.id.text1));
+//        timeText.setTypeface(Typeface.createFromAsset(getContext().getAssets(), "fonts/Roboto-LightItalic.ttf"));
+//        if(stop.direction != null && stop.direction.predictions != null){
+//
+//            for(int i=0;i<stop.direction.predictions.size(); i++){
+//                Body.Prediction prediction = stop.direction.predictions.get(i);
+//                int predTime = (prediction.getMinutes() > 0 ? prediction.getMinutes():prediction.getSeconds());
+//                String secondaryTxt = (prediction.getMinutes() > 0 ? " min ":" sec ");
+//                final SpannableString timeSpan = new SpannableString("" + predTime);
+//                if(i == 0){
+//                    timeSpan.setSpan(new RelativeSizeSpan(2f), 0, timeSpan.length(), 0); // set size
+//                    timeSpan.setSpan( new android.text.style.StyleSpan(Typeface.BOLD), 0, timeSpan.length(), 0);
+//                    if(predTime < 10){
+//                        timeSpan.setSpan(new ForegroundColorSpan(Color.RED), 0, timeSpan.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//                    }
+//                    timeText.setText(TextUtils.concat(timeSpan, secondaryTxt));
+//                }else if(i == 1){
+//                    timeSpan.setSpan(new RelativeSizeSpan(1.5f), 0, timeSpan.length(), 0); // set size
+//                    timeSpan.setSpan( new android.text.style.StyleSpan(Typeface.BOLD), 0, timeSpan.length(), 0);
+//                    timeText.setText(TextUtils.concat(timeText.getText(), timeSpan, secondaryTxt));
+//                }else if(i == 2){
+//                    timeSpan.setSpan(new RelativeSizeSpan(1.5f), 0, timeSpan.length(), 0); // set size
+//                    timeSpan.setSpan( new android.text.style.StyleSpan(Typeface.BOLD), 0, timeSpan.length(), 0);
+//                    timeText.setText(TextUtils.concat(timeText.getText(), timeSpan, secondaryTxt));
+//                }
+//            }
+//        }
         return convertView;
     }
 

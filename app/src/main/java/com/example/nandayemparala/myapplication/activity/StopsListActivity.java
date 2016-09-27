@@ -140,8 +140,8 @@ public class StopsListActivity extends BaseActivity {
 
 
 
-        StopsAdapter adapter = new StopsAdapter(this, R.layout.stop_list_row, predictions);
-        stopsList.setAdapter(adapter);
+//        StopsAdapter adapter = new StopsAdapter(this, R.layout.stop_list_row, predictions);
+//        stopsList.setAdapter(adapter);
 
     }
 

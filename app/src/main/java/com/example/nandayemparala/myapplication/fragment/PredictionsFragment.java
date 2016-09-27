@@ -1,16 +1,18 @@
-package com.example.nandayemparala.myapplication.fragment;/*
+package com.example.nandayemparala.myapplication.fragment;
+/*
  * Created by Nanda Yemparala on 9/12/16.
  */
 
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.nandayemparala.myapplication.R;
-import com.example.nandayemparala.myapplication.activity.BaseActivity;
-import com.example.nandayemparala.myapplication.adapter.StopsAdapter;
+import com.example.nandayemparala.myapplication.adapter.PredictionsAdapter;
 import com.example.nandayemparala.myapplication.api.PredictionsApi;
 import com.example.nandayemparala.myapplication.application.App;
 import com.example.nandayemparala.myapplication.model.Body;
@@ -22,13 +24,15 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
-import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.FragmentArg;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
-import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
@@ -39,12 +43,11 @@ import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 @EFragment(R.layout.stops_list_layout)
 public class PredictionsFragment extends Fragment {
 
-
     @FragmentArg
     String routeTag;
 
     @ViewById(R.id.stops_list)
-    ListView stopsList;
+    RecyclerView stopsList;
 
     @ViewById(R.id.refresh_list)
     Button refreshList;
@@ -52,9 +55,10 @@ public class PredictionsFragment extends Fragment {
     @ViewById(R.id.noOfVehicles)
     TextView noOfVehicles;
 
-
     @AfterViews
     void downloadPredictions(){
+        stopsList.setLayoutManager(
+                new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         getPredictions();
     }
 
@@ -62,6 +66,8 @@ public class PredictionsFragment extends Fragment {
     void refreshList(){
         getPredictions();
     }
+
+    int vehiclesCount = -1;
 
     @Background
     void getPredictions(){
@@ -84,20 +90,23 @@ public class PredictionsFragment extends Fragment {
             Body body = response.body();
 
             List<Body.Predictions> bodyPredictions = body.getPredictions();
+
             for(Body.Predictions predictions1: bodyPredictions){
                 if(predictions1.direction == null){
                     Log.e("Preds", "Prediction Direction is null");
                     continue;
                 }
-                if(predictions1.direction.predictions == null){
+                if(predictions1.direction.getPredictions().size() == 0){
                     Log.e("Preds", "Predictions is null");
                     continue;
                 }
-                for(Body.Prediction p : predictions1.direction.predictions){
-                    Log.i("Prediction", "Stop"+p.getMinutes()+ " Min:" +p.getSeconds());
+                if(vehiclesCount < 0){
+                    vehiclesCount = predictions1.direction.getNoOfVehicles();
+                }
+                for(Body.Prediction p : predictions1.direction.getPredictions()){
+                    Log.i("Prediction", "Stop"+p.getMinutes()+ " Min:" +p.getSeconds() +" Vehicles: "+p.getVehicle());
                 }
             }
-//            noOfVehicles.setText("Vehicles: "+bodyPredictions.get(0).direction.getNoOfVehicles());
             loadPredictions(bodyPredictions);
         } catch (Exception e) {
             onError(e);
@@ -112,7 +121,34 @@ public class PredictionsFragment extends Fragment {
 
     @UiThread
     void loadPredictions(List<Body.Predictions> predictions){
-        StopsAdapter adapter = new StopsAdapter(getActivity(), R.layout.stop_list_row, predictions);
-        stopsList.setAdapter(adapter);
+        try{
+            Collections.sort(predictions, new StopsOrder(routeTag));
+            noOfVehicles.setText("Vehicles: "+ (vehiclesCount < 0 ? 0: vehiclesCount));
+            PredictionsAdapter adapter = new PredictionsAdapter(predictions);
+            stopsList.setAdapter(adapter);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    private class StopsOrder implements Comparator<Body.Predictions>{
+
+        HashMap<String, Integer> sequence= new HashMap<>();
+
+        public StopsOrder(String routeTag) throws SQLException{
+            Route route = App.getDatabaseHelper().getRouteDao().queryForEq("tag", routeTag).get(0);
+            for(Stop s: route.getStops()){
+                Log.i("TEST", "TAG: "+s.getTag() + " SN: "+s.getStopNumber());
+                sequence.put(s.getTag(), s.getStopNumber());
+            }
+        }
+
+        @Override
+        public int compare(Body.Predictions p1, Body.Predictions p2) {
+            int p1StopNumber = sequence.get(p1.stopTag);
+            int p2StopNumber = sequence.get(p2.stopTag);
+            return p1StopNumber - p2StopNumber;
+        }
     }
 }
