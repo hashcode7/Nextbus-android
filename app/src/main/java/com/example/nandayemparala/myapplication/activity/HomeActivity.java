@@ -1,4 +1,6 @@
-package com.example.nandayemparala.myapplication.activity;/*
+package com.example.nandayemparala.myapplication.activity;
+
+/*
  * Created by Nanda Yemparala on 9/12/16.
  */
 
@@ -11,14 +13,22 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.example.nandayemparala.myapplication.PrefsManager;
 import com.example.nandayemparala.myapplication.R;
 import com.example.nandayemparala.myapplication.api.AgencyListApi;
 import com.example.nandayemparala.myapplication.api.PredictionsApi;
+import com.example.nandayemparala.myapplication.application.App;
 import com.example.nandayemparala.myapplication.fragment.PredictionsFragment_;
 import com.example.nandayemparala.myapplication.model.Body;
 import com.example.nandayemparala.myapplication.model.Route;
@@ -48,6 +58,12 @@ public class HomeActivity extends BaseActivity {
     ViewPager viewPager;
     @ViewById(R.id.sliding_tabs)
     TabLayout tabLayout;
+    @ViewById(R.id.drawer_layout)
+    DrawerLayout mDrawerLayout;
+    @ViewById(R.id.left_drawer)
+    ListView mDrawerList;
+    @ViewById(R.id.toolbar)
+    Toolbar toolbar;
 
     public List<Route> routes = new ArrayList<>();
     public List<Fragment> framgents = new ArrayList<>();
@@ -70,6 +86,23 @@ public class HomeActivity extends BaseActivity {
             initialDownload();
             return;
         }
+        setSupportActionBar(toolbar);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open_drawer_desc, R.string.open_drawer_desc);
+//        getSupportActionBar().setHomeButtonEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        // Set the adapter for the list view
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, new String[]{"Predictions", "Favorites"}));
+        // Set the list's click listener
+        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                App.showToast("Pos: "+position);
+                mDrawerLayout.closeDrawers();
+            }
+        });
+        toggle.syncState();
+
 
         try{
             routes = getHelper().getRouteDao().queryForAll();
