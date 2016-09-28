@@ -87,6 +87,7 @@ public class HomeActivity extends BaseActivity {
             return;
         }
         setSupportActionBar(toolbar);
+//        mDrawerLayout.setStatusBarBackground(R.color.primary_dark);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open_drawer_desc, R.string.open_drawer_desc);
 //        getSupportActionBar().setHomeButtonEnabled(true);
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -101,6 +102,7 @@ public class HomeActivity extends BaseActivity {
                 mDrawerLayout.closeDrawers();
             }
         });
+        mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
 
