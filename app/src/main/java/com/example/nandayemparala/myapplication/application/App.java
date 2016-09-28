@@ -3,6 +3,7 @@ package com.example.nandayemparala.myapplication.application;
 import android.support.annotation.NonNull;
 import android.widget.Toast;
 
+import com.example.nandayemparala.myapplication.PrefsManager;
 import com.example.nandayemparala.myapplication.model.ormlite.DatabaseHelper;
 
 /**
@@ -17,6 +18,8 @@ public class App extends android.app.Application {
     public void onCreate() {
         super.onCreate();
         application = this;
+
+        PrefsManager.getInstance(this); // TODO Use init
     }
 
 

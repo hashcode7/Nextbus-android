@@ -3,15 +3,20 @@ package com.example.nandayemparala.myapplication.fragment;
  * Created by Nanda Yemparala on 9/12/16.
  */
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Rect;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.nandayemparala.myapplication.PrefsManager;
 import com.example.nandayemparala.myapplication.R;
+import com.example.nandayemparala.myapplication.activity.IntroActivty;
 import com.example.nandayemparala.myapplication.adapter.PredictionsAdapter;
 import com.example.nandayemparala.myapplication.api.PredictionsApi;
 import com.example.nandayemparala.myapplication.application.App;
@@ -19,6 +24,10 @@ import com.example.nandayemparala.myapplication.model.Body;
 import com.example.nandayemparala.myapplication.model.Route;
 import com.example.nandayemparala.myapplication.model.Stop;
 import com.example.nandayemparala.myapplication.model.ormlite.DatabaseHelper;
+import com.example.nandayemparala.myapplication.utils.BackgroundColorDecoration;
+import com.example.nandayemparala.myapplication.utils.ColorUtils;
+import com.example.nandayemparala.myapplication.viewholder.PredictionViewHolder;
+import com.nikhilpanju.recyclerviewenhanced.RecyclerTouchListener;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
@@ -55,11 +64,45 @@ public class PredictionsFragment extends Fragment {
     @ViewById(R.id.noOfVehicles)
     TextView noOfVehicles;
 
+    RecyclerTouchListener listener;
+
     @AfterViews
     void downloadPredictions(){
         stopsList.setLayoutManager(
                 new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+
+        listener = new RecyclerTouchListener(getActivity(), stopsList);
+        listener
+                .setIndependentViews(R.id.fav_button)
+                .setClickable(new RecyclerTouchListener.OnRowClickListener() {
+                    @Override
+                    public void onRowClicked(int position) {
+                        App.showToast("Pos: "+position);
+                    }
+
+                    @Override
+                    public void onIndependentViewClicked(int independentViewID, int position) {
+                        if(independentViewID == R.id.fav_button){
+                            App.showToast("Hello there.. I am at: "+position);
+                        }
+                    }
+                });
+//        stopsList.addItemDecoration(new BackgroundColorDecoration(getActivity()));
         getPredictions();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        stopsList.addOnItemTouchListener(listener);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        stopsList.removeOnItemTouchListener(listener);
     }
 
     @Click(R.id.refresh_list)
@@ -136,7 +179,7 @@ public class PredictionsFragment extends Fragment {
 
         HashMap<String, Integer> sequence= new HashMap<>();
 
-        public StopsOrder(String routeTag) throws SQLException{
+        StopsOrder(String routeTag) throws SQLException{
             Route route = App.getDatabaseHelper().getRouteDao().queryForEq("tag", routeTag).get(0);
             for(Stop s: route.getStops()){
                 Log.i("TEST", "TAG: "+s.getTag() + " SN: "+s.getStopNumber());
