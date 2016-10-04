@@ -54,14 +54,14 @@ import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 @EActivity(R.layout.activity_home)
 public class HomeActivity extends BaseActivity {
 
-    @ViewById(R.id.pager)
+    @ViewById(R.id.viewpager)
     ViewPager viewPager;
-    @ViewById(R.id.sliding_tabs)
+    @ViewById(R.id.tabs)
     TabLayout tabLayout;
     @ViewById(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
-    @ViewById(R.id.left_drawer)
-    ListView mDrawerList;
+//    @ViewById(R.id.left_drawer)
+//    ListView mDrawerList;
     @ViewById(R.id.toolbar)
     Toolbar toolbar;
 
@@ -92,16 +92,16 @@ public class HomeActivity extends BaseActivity {
 //        getSupportActionBar().setHomeButtonEnabled(true);
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // Set the adapter for the list view
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, new String[]{"Predictions", "Favorites"}));
+//        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+//                android.R.layout.simple_list_item_1, new String[]{"Predictions", "Favorites"}));
         // Set the list's click listener
-        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                App.showToast("Pos: "+position);
-                mDrawerLayout.closeDrawers();
-            }
-        });
+//        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                App.showToast("Pos: "+position);
+//                mDrawerLayout.closeDrawers();
+//            }
+//        });
         mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 

@@ -3,4 +3,5 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="card_map_size">300dp</dimen>
+    <dimen name="pred_nav_padding">40dp</dimen>
 </resources>

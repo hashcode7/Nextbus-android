@@ -3,20 +3,14 @@ package com.example.nandayemparala.myapplication.fragment;
  * Created by Nanda Yemparala on 9/12/16.
  */
 
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Rect;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.nandayemparala.myapplication.PrefsManager;
 import com.example.nandayemparala.myapplication.R;
-import com.example.nandayemparala.myapplication.activity.IntroActivty;
 import com.example.nandayemparala.myapplication.adapter.PredictionsAdapter;
 import com.example.nandayemparala.myapplication.api.PredictionsApi;
 import com.example.nandayemparala.myapplication.application.App;
@@ -24,9 +18,6 @@ import com.example.nandayemparala.myapplication.model.Body;
 import com.example.nandayemparala.myapplication.model.Route;
 import com.example.nandayemparala.myapplication.model.Stop;
 import com.example.nandayemparala.myapplication.model.ormlite.DatabaseHelper;
-import com.example.nandayemparala.myapplication.utils.BackgroundColorDecoration;
-import com.example.nandayemparala.myapplication.utils.ColorUtils;
-import com.example.nandayemparala.myapplication.viewholder.PredictionViewHolder;
 import com.nikhilpanju.recyclerviewenhanced.RecyclerTouchListener;
 
 import org.androidannotations.annotations.AfterViews;
@@ -54,13 +45,10 @@ public class PredictionsFragment extends Fragment {
 
     @FragmentArg
     String routeTag;
-
     @ViewById(R.id.stops_list)
     RecyclerView stopsList;
-
     @ViewById(R.id.refresh_list)
     Button refreshList;
-
     @ViewById(R.id.noOfVehicles)
     TextView noOfVehicles;
 
@@ -68,8 +56,7 @@ public class PredictionsFragment extends Fragment {
 
     @AfterViews
     void downloadPredictions(){
-        stopsList.setLayoutManager(
-                new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        stopsList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
         listener = new RecyclerTouchListener(getActivity(), stopsList);
         listener
@@ -127,8 +114,7 @@ public class PredictionsFragment extends Fragment {
                 stops.add(route.getTag() + "|" + stop.getTag());
             }
             PredictionsApi predictionsApi = retrofit.create(PredictionsApi.class);
-            Response<Body> response = null;
-            response = predictionsApi.getPredictions(stops).execute();
+            Response<Body> response= predictionsApi.getPredictions(stops).execute();
             Log.i("Response", "Response: " + response.raw().toString());
             Body body = response.body();
 

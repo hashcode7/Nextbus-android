@@ -24,8 +24,9 @@ import java.util.List;
 
 public class PredictionViewHolder extends RecyclerView.ViewHolder {
 
-    TextView stopTitle;
-    TextView times;
+    private TextView stopTitle;
+    private TextView times;
+    private View busPath;
 
     private Calendar nextPrediction = null;
 
@@ -33,7 +34,12 @@ public class PredictionViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         stopTitle = (TextView) itemView.findViewById(R.id.stop_title);
         times = (TextView) itemView.findViewById(R.id.times);
+        busPath = itemView.findViewById(R.id.bus_path);
         times.setTypeface(Typeface.createFromAsset(itemView.getContext().getAssets(), "fonts/Roboto-LightItalic.ttf"));
+    }
+
+    public View getBusPath(){
+        return busPath;
     }
 
     public void setStopTitle(String stopTitle) {

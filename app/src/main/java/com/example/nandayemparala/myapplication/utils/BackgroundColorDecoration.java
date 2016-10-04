@@ -1,6 +1,5 @@
 package com.example.nandayemparala.myapplication.utils;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
